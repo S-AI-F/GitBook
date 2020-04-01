@@ -24,7 +24,7 @@
 <meta name="author" content="Yihui Xie" />
 
 
-<meta name="date" content="2020-03-31" />
+<meta name="date" content="2020-04-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="intro.html"/>
-<link rel="next" href="methods.html"/>
+<link rel="next" href="github.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -134,10 +134,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
 <li class="chapter" data-level="3" data-path="git-basics.html"><a href="git-basics.html"><i class="fa fa-check"></i><b>3</b> Git Basics</a><ul>
-<li class="chapter" data-level="3.1" data-path="git-basics.html"><a href="git-basics.html#initializig-a-repository-in-an-existing-directory"><i class="fa fa-check"></i><b>3.1</b> Initializig a Repository in an Existing Directory</a></li>
-<li class="chapter" data-level="3.2" data-path="git-basics.html"><a href="git-basics.html#cloning-an-existing-git-project"><i class="fa fa-check"></i><b>3.2</b> Cloning an existing git project</a></li>
+<li class="chapter" data-level="3.1" data-path="git-basics.html"><a href="git-basics.html#getting-a-git-repositery"><i class="fa fa-check"></i><b>3.1</b> Getting a Git repositery</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="git-basics.html"><a href="git-basics.html#initializig-a-repository-in-an-existing-directory"><i class="fa fa-check"></i><b>3.1.1</b> Initializig a Repository in an Existing Directory</a></li>
+<li class="chapter" data-level="3.1.2" data-path="git-basics.html"><a href="git-basics.html#cloning-an-existing-git-project"><i class="fa fa-check"></i><b>3.1.2</b> Cloning an existing git project</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="3.2" data-path="git-basics.html"><a href="git-basics.html#recording-changes-to-the-repositery"><i class="fa fa-check"></i><b>3.2</b> Recording Changes to the repositery</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>4</b> GitHub</a><ul>
+<li class="chapter" data-level="4.1" data-path="github.html"><a href="github.html#adding-an-existing-project-to-github"><i class="fa fa-check"></i><b>4.1</b> Adding an existing project to GitHub</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
 <li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
 <li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
@@ -166,11 +171,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="git-basics" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Git Basics</h1>
+<div id="getting-a-git-repositery" class="section level2">
+<h2><span class="header-section-number">3.1</span> Getting a Git repositery</h2>
 <p>There are two ways for obtaining a Git repository:
 - Transform an existing local directory without version control into a Git repositor
 - Clone an existing Git repositery from somewhere else</p>
-<div id="initializig-a-repository-in-an-existing-directory" class="section level2">
-<h2><span class="header-section-number">3.1</span> Initializig a Repository in an Existing Directory</h2>
+<div id="initializig-a-repository-in-an-existing-directory" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Initializig a Repository in an Existing Directory</h3>
 <p>First, you have to go to the project directory</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># work directory</span></a>
 <a class="sourceLine" id="cb4-2" title="2">initial_repo =<span class="st"> &quot;D:/git_test/Git_Book/&quot;</span></a>
@@ -206,20 +213,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">cmd_add =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;git add&quot;</span>, filename, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</a>
 <a class="sourceLine" id="cb11-2" title="2"><span class="kw">shell</span>(cmd_add)</a>
 <a class="sourceLine" id="cb11-3" title="3"><span class="kw">shell</span>(<span class="st">&#39;git commit -m &quot;adding new file&quot;&#39;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;[master (root-commit) ebb8719] adding new file&quot;  
+<pre><code>## [1] &quot;[master (root-commit) a95445e] adding new file&quot;  
 ## [2] &quot; 1 file changed, 0 insertions(+), 0 deletions(-)&quot;
-## [3] &quot; create mode 100644 file_559.csv&quot;</code></pre>
+## [3] &quot; create mode 100644 file_146.csv&quot;</code></pre>
 </div>
-<div id="cloning-an-existing-git-project" class="section level2">
-<h2><span class="header-section-number">3.2</span> Cloning an existing git project</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">shell</span>(<span class="st">&quot;git clone https://github.com/S-AI-F/Remote-sensing-image-analysis MyClone&quot;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## Warning in system(cmd, intern = intern, wait = wait | intern,
-## show.output.on.console = wait, : l&#39;exécution de la commande &#39;C:
-## \WINDOWS\system32\cmd.exe /c git clone https://github.com/S-AI-F/Remote-sensing-
-## image-analysis MyClone&#39; renvoie un statut 128</code></pre>
-<pre><code>## character(0)
-## attr(,&quot;status&quot;)
-## [1] 128</code></pre>
+<div id="cloning-an-existing-git-project" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Cloning an existing git project</h3>
+<p>When we want to get a copy of an existing Git repositery we can use <em>git clone</em></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">shell</span>(<span class="st">&quot;git clone https://github.com/S-AI-F/Remote-sensing-image-analysis MyClone&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning in shell(&quot;git clone https://github.com/S-AI-F/Remote-sensing-image-
+## analysis MyClone&quot;): &#39;git clone https://github.com/S-AI-F/Remote-sensing-image-
+## analysis MyClone&#39; execution failed with error code 128</code></pre>
+</div>
+</div>
+<div id="recording-changes-to-the-repositery" class="section level2">
+<h2><span class="header-section-number">3.2</span> Recording Changes to the repositery</h2>
 
 </div>
 </div>
@@ -229,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="github.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
