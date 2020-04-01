@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Git Basics | A Minimal Book Example</title>
+  <title>Chapter 3 Git Basics | My Git Turorial</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Git Basics | A Minimal Book Example" />
+  <meta property="og:title" content="Chapter 3 Git Basics | My Git Turorial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,12 +16,12 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Git Basics | A Minimal Book Example" />
+  <meta name="twitter:title" content="Chapter 3 Git Basics | My Git Turorial" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Yihui Xie" />
+<meta name="author" content="Saif Shabou" />
 
 
 <meta name="date" content="2020-04-01" />
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">My Git Tutorial</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
@@ -144,6 +144,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="github.html"><a href="github.html#adding-an-existing-project-to-github"><i class="fa fa-check"></i><b>4.1</b> Adding an existing project to GitHub</a></li>
 <li class="chapter" data-level="4.2" data-path="github.html"><a href="github.html#getting-changes-from-a-remote-repository"><i class="fa fa-check"></i><b>4.2</b> Getting changes from a remote repository</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="github.html"><a href="github.html#cloning-a-repository"><i class="fa fa-check"></i><b>4.2.1</b> Cloning a repository</a></li>
+<li class="chapter" data-level="4.2.2" data-path="github.html"><a href="github.html#fetching-changes-from-a-remote-repository"><i class="fa fa-check"></i><b>4.2.2</b> Fetching changes from a remote repository</a></li>
+<li class="chapter" data-level="4.2.3" data-path="github.html"><a href="github.html#merging-changes-into-your-local-branch"><i class="fa fa-check"></i><b>4.2.3</b> Merging changes into your local branch</a></li>
+<li class="chapter" data-level="4.2.4" data-path="github.html"><a href="github.html#pulling-changes-from-a-remote-repository"><i class="fa fa-check"></i><b>4.2.4</b> Pulling changes from a remote repository</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
@@ -164,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">My Git Turorial</a>
           </h1>
         </div>
 
@@ -182,48 +185,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="initializig-a-repository-in-an-existing-directory" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Initializig a Repository in an Existing Directory</h3>
 <p>First, you have to go to the project directory</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># work directory</span></a>
-<a class="sourceLine" id="cb4-2" title="2">initial_repo =<span class="st"> &quot;D:/git_test/Git_Book/&quot;</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="kw">setwd</span>(initial_repo)</a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="co"># Repository directory name</span></a>
-<a class="sourceLine" id="cb4-5" title="5">dir_name =<span class="st"> &quot;MyRepo&quot;</span></a>
-<a class="sourceLine" id="cb4-6" title="6">new_repo =<span class="st"> </span><span class="kw">paste</span>(initial_repo,<span class="st">&quot;MyRepo&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)</a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="co"># verify if the repo file exist and remove it if it exists</span></a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="cf">if</span>(<span class="kw">dir.exists</span>(<span class="st">&quot;D:/git_test/Git_Book/MyRepo&quot;</span>) <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>){</a>
-<a class="sourceLine" id="cb4-9" title="9">  <span class="kw">unlink</span>(<span class="st">&quot;D:/git_test/Git_Book/MyRepo&quot;</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb4-10" title="10">}</a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="co"># we create a project directory</span></a>
-<a class="sourceLine" id="cb4-12" title="12"><span class="kw">dir.create</span>(<span class="st">&quot;MyRepo&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># work directory</span></a>
+<a class="sourceLine" id="cb3-2" title="2">initial_repo =<span class="st"> &quot;D:/git_test/Git_Book/&quot;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">setwd</span>(initial_repo)</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co"># Repository directory name</span></a>
+<a class="sourceLine" id="cb3-5" title="5">dir_name =<span class="st"> &quot;MyRepo&quot;</span></a>
+<a class="sourceLine" id="cb3-6" title="6">new_repo =<span class="st"> </span><span class="kw">paste</span>(initial_repo,<span class="st">&quot;MyRepo&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>)</a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co"># verify if the repo file exist and remove it if it exists</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="cf">if</span>(<span class="kw">dir.exists</span>(<span class="st">&quot;D:/git_test/Git_Book/MyRepo&quot;</span>) <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>){</a>
+<a class="sourceLine" id="cb3-9" title="9">  <span class="kw">unlink</span>(<span class="st">&quot;D:/git_test/Git_Book/MyRepo&quot;</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb3-10" title="10">}</a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co"># we create a project directory</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="kw">dir.create</span>(<span class="st">&quot;MyRepo&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning in dir.create(&quot;MyRepo&quot;): &#39;MyRepo&#39; existe déjà</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># Then we go to that projetc directory</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="kw">setwd</span>(new_repo)</a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="kw">shell</span>(<span class="st">&quot;dir&quot;</span>)</a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="co"># initialize a git repository</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="kw">shell</span>(<span class="st">&quot;git init&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Then we go to that projetc directory</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">setwd</span>(new_repo)</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">shell</span>(<span class="st">&quot;dir&quot;</span>)</a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co"># initialize a git repository</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">shell</span>(<span class="st">&quot;git init&quot;</span>)</a></code></pre></div>
 <p>This creates a new subdirectory named <em>.git</em> that contains all necessary repository files (a git repository skeleton).</p>
 <p>Now we can start version-conrolling files and do initial commits.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">setwd</span>(new_repo)</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="co"># First we have to specify our identity</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="kw">shell</span>(<span class="st">&#39;git config --global user.name &quot;Saif Shabou&quot;&#39;</span>)</a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="kw">shell</span>(<span class="st">&#39;git config --global user.email &quot;saif.shabou@gmail.com&quot;&#39;</span>)</a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="kw">print</span>(<span class="kw">getwd</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">setwd</span>(new_repo)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co"># First we have to specify our identity</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">shell</span>(<span class="st">&#39;git config --global user.name &quot;Saif Shabou&quot;&#39;</span>)</a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="kw">shell</span>(<span class="st">&#39;git config --global user.email &quot;saif.shabou@gmail.com&quot;&#39;</span>)</a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="kw">print</span>(<span class="kw">getwd</span>())</a></code></pre></div>
 <pre><code>## [1] &quot;D:/git_test/Git_Book/MyRepo&quot;</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># then we create a new file and commit this action</span></a>
-<a class="sourceLine" id="cb9-2" title="2">nb =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>, <span class="dv">1</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-3" title="3">filename =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;file_&quot;</span>,nb,<span class="st">&quot;.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="kw">file.create</span>(filename)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># then we create a new file and commit this action</span></a>
+<a class="sourceLine" id="cb8-2" title="2">nb =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>, <span class="dv">1</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3">filename =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;file_&quot;</span>,nb,<span class="st">&quot;.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="kw">file.create</span>(filename)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">cmd_add =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;git add&quot;</span>, filename, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="kw">shell</span>(cmd_add)</a>
-<a class="sourceLine" id="cb11-3" title="3"><span class="kw">shell</span>(<span class="st">&#39;git commit -m &quot;adding new file&quot;&#39;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;[master (root-commit) 842e543] adding new file&quot;  
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">cmd_add =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;git add&quot;</span>, filename, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw">shell</span>(cmd_add)</a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="kw">shell</span>(<span class="st">&#39;git commit -m &quot;adding new file&quot;&#39;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;[master (root-commit) d9cbc47] adding new file&quot;  
 ## [2] &quot; 1 file changed, 0 insertions(+), 0 deletions(-)&quot;
-## [3] &quot; create mode 100644 file_259.csv&quot;</code></pre>
+## [3] &quot; create mode 100644 file_269.csv&quot;</code></pre>
 </div>
 <div id="cloning-an-existing-git-project" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> Cloning an existing git project</h3>
 <p>When we want to get a copy of an existing Git repositery we can use <em>git clone</em></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">shell</span>(<span class="st">&quot;git clone https://github.com/S-AI-F/Remote-sensing-image-analysis MyClone&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">shell</span>(<span class="st">&quot;git clone https://github.com/S-AI-F/Remote-sensing-image-analysis MyClone&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning in shell(&quot;git clone https://github.com/S-AI-F/Remote-sensing-image-
 ## analysis MyClone&quot;): &#39;git clone https://github.com/S-AI-F/Remote-sensing-image-
 ## analysis MyClone&#39; execution failed with error code 128</code></pre>
@@ -290,20 +293,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
