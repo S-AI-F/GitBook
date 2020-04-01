@@ -142,6 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>4</b> GitHub</a><ul>
 <li class="chapter" data-level="4.1" data-path="github.html"><a href="github.html#adding-an-existing-project-to-github"><i class="fa fa-check"></i><b>4.1</b> Adding an existing project to GitHub</a></li>
+<li class="chapter" data-level="4.2" data-path="github.html"><a href="github.html#getting-changes-from-a-remote-repository"><i class="fa fa-check"></i><b>4.2</b> Getting changes from a remote repository</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
 <li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
@@ -174,7 +175,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="adding-an-existing-project-to-github" class="section level2">
 <h2><span class="header-section-number">4.1</span> Adding an existing project to GitHub</h2>
 <p>1- Create a new repository on GitHub. To avoid arrors, do not initialize the new repository with README, license, or gitingore files. You can add these files after your project has been pushed to GitHub
-2-</p>
+2- Open Git Bash
+3- Chan the current working directory to your local project</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">setwd</span>(<span class="dt">dir =</span> <span class="st">&quot;D:/git_test/Git_Book/_book&quot;</span>)</a></code></pre></div>
+<p>4- Initialize the local directory as a Git repository</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">shell</span>(<span class="st">&quot;git init&quot;</span>)</a></code></pre></div>
+<p>5- Ad the files in your new local repositor. This stages them for the first commit</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">shell</span>(<span class="st">&quot;git add .&quot;</span>)</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="co">## Adds the files in the local repository and stages them for commit. To unstage a file, use &#39;git reset HEAD YOUR-FILE&#39;.</span></a></code></pre></div>
+<p>6- Commit the files that you have staged in your local repository</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">shell</span>(<span class="st">&#39;git commit -m &quot;My First commit&quot;&#39;</span>,<span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;[master b2bbddc] My First commit&quot;                                                                  
+## [2] &quot; 8 files changed, 64 insertions(+), 11 deletions(-)&quot;                                               
+## [3] &quot; rename .Rproj.user/CE830DEF/sources/s-B68FE081/{15953A3A =&gt; F1048629} (75%)&quot;                      
+## [4] &quot; create mode 100644 .Rproj.user/CE830DEF/sources/s-B68FE081/F1048629-contents&quot;                     
+## [5] &quot; delete mode 100644 .Rproj.user/shared/notebooks/638A3EBA-03-gitHub/1/CE830DEFB68FE081/chunks.json&quot;</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># Commits the tracked changes and prepares them to be pushed to a remote repository. To remove this commit and modify the file, use &#39;git reset --soft HEAD~1&#39; and commit and add the file again.</span></a></code></pre></div>
+<p>7- At the top of your GitHub repository’s Quick setup page, copy the remote repository URL</p>
+<p><img src="_book/images/copy-remote-repository-url-quick-setup.png" /></p>
+<p>8- In the Command prompt, add the URL for the remote repository where your local repository will be pushed</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co"># sets the new remote </span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="kw">shell</span>(<span class="st">&#39;git remote add origin https://github.com/S-AI-F/GitBook.git&#39;</span>)</a></code></pre></div>
+<pre><code>## Warning in shell(&quot;git remote add origin https://github.com/S-AI-F/GitBook.git&quot;):
+## &#39;git remote add origin https://github.com/S-AI-F/GitBook.git&#39; execution failed
+## with error code 128</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># Verifies the new remote URL</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">shell</span>(<span class="st">&#39;git remote -v&#39;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;origin\thttps://github.com/S-AI-F/GitBook.git (fetch)&quot;
+## [2] &quot;origin\thttps://github.com/S-AI-F/GitBook.git (push)&quot;</code></pre>
+<p>9 - Push the changes in your local repository to GitHub</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># Pushes the changes in your local repository up to the remote repository you specified as the origin</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">shell</span>(<span class="st">&#39;git push origin master&#39;</span>)</a></code></pre></div>
+<pre><code>## Warning in shell(&quot;git push origin master&quot;): &#39;git push origin master&#39; execution
+## failed with error code 1</code></pre>
+</div>
+<div id="getting-changes-from-a-remote-repository" class="section level2">
+<h2><span class="header-section-number">4.2</span> Getting changes from a remote repository</h2>
 
 </div>
 </div>
