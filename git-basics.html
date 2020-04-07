@@ -21,10 +21,10 @@
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Emma Shabou" />
+<meta name="author" content="Saif Shabou" />
 
 
-<meta name="date" content="2020-04-01" />
+<meta name="date" content="2020-04-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -138,7 +138,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="git-basics.html"><a href="git-basics.html#initializig-a-repository-in-an-existing-directory"><i class="fa fa-check"></i><b>3.1.1</b> Initializig a Repository in an Existing Directory</a></li>
 <li class="chapter" data-level="3.1.2" data-path="git-basics.html"><a href="git-basics.html#cloning-an-existing-git-project"><i class="fa fa-check"></i><b>3.1.2</b> Cloning an existing git project</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="git-basics.html"><a href="git-basics.html#recording-changes-to-the-repositery"><i class="fa fa-check"></i><b>3.2</b> Recording Changes to the repositery</a></li>
+<li class="chapter" data-level="3.2" data-path="git-basics.html"><a href="git-basics.html#recording-changes-to-the-repositery"><i class="fa fa-check"></i><b>3.2</b> Recording Changes to the repositery</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="git-basics.html"><a href="git-basics.html#checking-the-status-of-files"><i class="fa fa-check"></i><b>3.2.1</b> Checking the Status of Files</a></li>
+<li class="chapter" data-level="3.2.2" data-path="git-basics.html"><a href="git-basics.html#tracking-new-files"><i class="fa fa-check"></i><b>3.2.2</b> Tracking new Files</a></li>
+<li class="chapter" data-level="3.2.3" data-path="git-basics.html"><a href="git-basics.html#committing-changes"><i class="fa fa-check"></i><b>3.2.3</b> Committing changes</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>4</b> GitHub</a><ul>
 <li class="chapter" data-level="4.1" data-path="github.html"><a href="github.html#adding-an-existing-project-to-github"><i class="fa fa-check"></i><b>4.1</b> Adding an existing project to GitHub</a></li>
@@ -219,9 +223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">cmd_add =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;git add&quot;</span>, filename, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="kw">shell</span>(cmd_add)</a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="kw">shell</span>(<span class="st">&#39;git commit -m &quot;adding new file&quot;&#39;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;[master (root-commit) 60c2656] adding new file&quot;  
+<pre><code>## [1] &quot;[master (root-commit) 56d1195] adding new file&quot;  
 ## [2] &quot; 1 file changed, 0 insertions(+), 0 deletions(-)&quot;
-## [3] &quot; create mode 100644 file_30.csv&quot;</code></pre>
+## [3] &quot; create mode 100644 file_160.csv&quot;</code></pre>
 </div>
 <div id="cloning-an-existing-git-project" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> Cloning an existing git project</h3>
@@ -234,7 +238,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="recording-changes-to-the-repositery" class="section level2">
 <h2><span class="header-section-number">3.2</span> Recording Changes to the repositery</h2>
+<p>Each file in our working directory can be in one of to possible states: <em>tracked</em> or <em>untracked</em>.
+Tracked files are the files known by Git. They can be: unmodified, modified, or staged.
+Untracked files are any files in the orking directory that are not in the staging area.
+When we clone a repository, all the files will be tracked and unmodified.
+When we are editing files, Git considers them as modified since they changed from the last commit.
+As we work, we stage these modified files and then we commit all those stages changes. And this cycle repeats.</p>
+<div class="figure">
+<img src="images/lifecycle.png" alt="Git lifecycle (source:https://git-scm.com/book/en/v2)" />
+<p class="caption">Git lifecycle (source:<a href="https://git-scm.com/book/en/v2" class="uri">https://git-scm.com/book/en/v2</a>)</p>
+</div>
+<div id="checking-the-status-of-files" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Checking the Status of Files</h3>
+<p>The command <code>git status</code> enables s to determine the status of the different tracked files.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">shell</span>(<span class="st">&quot;git status&quot;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>##  [1] &quot;On branch master&quot;                                                         
+##  [2] &quot;Changes not staged for commit:&quot;                                           
+##  [3] &quot;  (use \&quot;git add &lt;file&gt;...\&quot; to update what will be committed)&quot;           
+##  [4] &quot;  (use \&quot;git restore &lt;file&gt;...\&quot; to discard changes in working directory)&quot;
+##  [5] &quot;  (commit or discard the untracked or modified content in submodules)&quot;    
+##  [6] &quot;\tmodified:   .Rproj.user/CE830DEF/sources/prop/72E6F1F2&quot;                  
+##  [7] &quot;\tmodified:   02-gitBasics.Rmd&quot;                                            
+##  [8] &quot;\tmodified:   Git_Book.Rmd&quot;                                                
+##  [9] &quot;\tmodified:   MyRepo (new commits)&quot;                                        
+## [10] &quot;\tmodified:   _book (modified content, untracked content)&quot;                 
+## [11] &quot;&quot;                                                                         
+## [12] &quot;no changes added to commit (use \&quot;git add\&quot; and/or \&quot;git commit -a\&quot;)&quot;</code></pre>
+<p>We have to check the file status to know if we need to make a new commit. When the message tells:<code>Your branch is up-to-date with 'origin/master'. nothing to commit, working directory clean</code>, it means that none of our tracked files are modified.</p>
+</div>
+<div id="tracking-new-files" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Tracking new Files</h3>
+<p>In order to track new file, we can use the command <code>git add</code>. To track all the existing files in the directory we use <code>git add .</code> In the <code>git status</code> results, we can see that Git recognizes the changes to be committed</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">shell</span>(<span class="st">&quot;git add .&quot;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## character(0)</code></pre>
+<p>We can use the command <code>git diff</code> to know what files we changed but not yet staged and what files we staged but not yet commited.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">shell</span>(<span class="st">&quot;git diff&quot;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;diff --git a/_book b/_book&quot;                                       
+## [2] &quot;--- a/_book&quot;                                                      
+## [3] &quot;+++ b/_book&quot;                                                      
+## [4] &quot;@@ -1 +1 @@&quot;                                                      
+## [5] &quot;-Subproject commit 60541b3b2f3d9da446b35180ab82562e3a748416&quot;      
+## [6] &quot;+Subproject commit 60541b3b2f3d9da446b35180ab82562e3a748416-dirty&quot;</code></pre>
+<p>The command compares what is in our working directory with the staging area. The results show the changes we have made and have not yet staged.</p>
+</div>
+<div id="committing-changes" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Committing changes</h3>
+<p>Committing changes include only files created and modified that are added using <code>git add</code> command. We have to check git status before committing in order to check that files to commit are already staged.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">shell</span>(<span class="st">&#39;git commit -m &quot;my message of comit&quot;&#39;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;[master 677618a] my message of comit&quot;              
+## [2] &quot; 4 files changed, 21 insertions(+), 3 deletions(-)&quot;</code></pre>
 
+</div>
 </div>
 </div>
             </section>
